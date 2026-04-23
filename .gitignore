@@ -1,0 +1,17 @@
+# Node
+node_modules/
+dist/
+.env
+*.env
+
+# Angular
+client/dist/
+client/.angular/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
