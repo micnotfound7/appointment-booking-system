@@ -62,6 +62,22 @@ const requireAdmin = (req: any, res: any, next: any) => {
 // Upload
 const upload = multer({ dest: 'uploads/' });
 
+// Keep alive ping - prevents Render free tier from sleeping
+const BACKEND_URL = 'https://bookease-backend-9p4b.onrender.com';
+
+setInterval(async () => {
+  try {
+    const https = await import('https');
+    https.get(`${BACKEND_URL}/api/services`, (res) => {
+      console.log(`✅ Keep-alive ping: ${res.statusCode}`);
+    }).on('error', (err) => {
+      console.log('Keep-alive error:', err.message);
+    });
+  } catch (e) {
+    console.log('Keep-alive failed');
+  }
+}, 10 * 60 * 1000); // every 10 minutes
+
 // ==================== AUTH ROUTES ====================
 app.post('/api/auth/register', async (req: any, res: any) => {
   const { name, email, phone, location, password } = req.body;
