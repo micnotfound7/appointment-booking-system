@@ -13,7 +13,12 @@ import YAML from 'yamljs';
 
 const app = express();
 
-app.use(cors({ origin: 'http://localhost:4200', credentials: true }));
+app.use(cors({
+  origin: '*',
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: false
+}));
 app.use(express.json());
 
 // Swagger Docs
