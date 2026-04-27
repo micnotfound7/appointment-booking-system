@@ -1,0 +1,148 @@
+<div class="min-h-screen bg-white">
+
+  <!-- Page Header -->
+  <div class="bg-gradient-to-r from-gray-900 to-gray-800 text-white py-10 sm:py-14 px-4">
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+      <div>
+        <h1 class="text-2xl sm:text-3xl lg:text-4xl font-bold">My Appointments</h1>
+        <p class="text-gray-300 text-sm sm:text-base mt-1">Manage and track your bookings</p>
+      </div>
+      <a routerLink="/services"
+         class="inline-flex items-center gap-2 bg-blue-600 text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-blue-700 active:bg-blue-800 transition text-sm sm:text-base whitespace-nowrap w-fit">
+        + Book New
+      </a>
+    </div>
+  </div>
+
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-10">
+
+    <!-- Filters -->
+    <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-6 sm:mb-8">
+      <div class="relative flex-1">
+        <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 text-sm">🔍</span>
+        <input [(ngModel)]="search" (ngModelChange)="filter()"
+               placeholder="Search by service name..."
+               class="w-full pl-10 pr-4 border-2 border-gray-200 text-gray-900 placeholder-gray-400 rounded-xl px-4 py-2.5 sm:py-3 focus:outline-none focus:border-blue-600 transition text-sm sm:text-base">
+      </div>
+      <select [(ngModel)]="statusFilter" (ngModelChange)="filter()"
+              class="border-2 border-gray-200 text-gray-700 rounded-xl px-4 py-2.5 sm:py-3 focus:outline-none focus:border-blue-600 transition text-sm sm:text-base bg-white">
+        <option value="">All Status</option>
+        <option value="pending">Pending</option>
+        <option value="confirmed">Confirmed</option>
+        <option value="cancelled">Cancelled</option>
+        <option value="completed">Completed</option>
+      </select>
+    </div>
+
+    <!-- Loading -->
+    <div *ngIf="loading" class="text-center py-16 sm:py-24">
+      <div class="text-5xl animate-spin inline-block mb-4">⏳</div>
+      <p class="text-gray-500 text-sm sm:text-base font-medium">Loading appointments...</p>
+    </div>
+
+    <!-- Empty -->
+    <div *ngIf="!loading && filtered.length === 0"
+         class="text-center py-16 sm:py-24 bg-gray-50 rounded-2xl border-2 border-gray-200">
+      <div class="text-6xl mb-4">📅</div>
+      <h3 class="text-lg sm:text-xl font-bold text-gray-900 mb-2">No appointments yet</h3>
+      <p class="text-gray-500 text-sm sm:text-base mb-6 px-4">
+        Start by booking your first appointment
+      </p>
+      <a routerLink="/services"
+         class="inline-block bg-blue-600 text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg font-semibold hover:bg-blue-700 transition text-sm sm:text-base">
+        Browse Services
+      </a>
+    </div>
+
+    <!-- Appointment Cards -->
+    <div *ngIf="!loading && filtered.length > 0" class="space-y-3 sm:space-y-4">
+      <div *ngFor="let a of paginatedItems"
+           class="bg-white border-2 border-gray-200 rounded-xl overflow-hidden hover:border-blue-500 hover:shadow-lg transition">
+
+        <!-- Card Top -->
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 p-4 sm:p-5 lg:p-6">
+
+          <!-- Left Info -->
+          <div class="flex-1 min-w-0">
+            <div class="flex flex-wrap items-center gap-2 mb-2">
+              <h3 class="text-base sm:text-lg font-bold text-gray-900 truncate">
+                {{ a.service_name }}
+              </h3>
+              <span [class]="'px-2.5 py-0.5 rounded-full font-bold text-xs ' + getStatusClass(a.status)">
+                {{ a.status | titlecase }}
+              </span>
+            </div>
+
+            <!-- Date + Time + Price -->
+            <div class="flex flex-wrap gap-3 sm:gap-4 text-xs sm:text-sm text-gray-600">
+              <div class="flex items-center gap-1.5">
+                <span>📅</span>
+                <span>{{ a.appointment_date | date:'MMM d, y' }}</span>
+              </div>
+              <div class="flex items-center gap-1.5">
+                <span>🕐</span>
+                <span>{{ a.appointment_time }}</span>
+              </div>
+              <div class="flex items-center gap-1.5 text-blue-600 font-semibold">
+                <span>💰</span>
+                <span>₱{{ a.price }}</span>
+              </div>
+            </div>
+
+            <!-- Notes -->
+            <p *ngIf="a.notes"
+               class="text-gray-500 text-xs mt-2.5 italic border-l-2 border-blue-300 pl-3 line-clamp-2">
+              {{ a.notes }}
+            </p>
+          </div>
+
+          <!-- Action -->
+          <div class="flex sm:flex-col items-center sm:items-end gap-2 flex-shrink-0">
+            <button *ngIf="a.status === 'pending'"
+                    (click)="cancel(a.id)"
+                    class="text-xs sm:text-sm text-red-500 hover:text-red-700 border border-red-200 hover:bg-red-50 px-3 py-1.5 rounded-lg font-semibold transition whitespace-nowrap">
+              Cancel
+            </button>
+            <span *ngIf="a.status !== 'pending'"
+                  class="text-xs text-gray-400 italic">
+              {{ a.status === 'completed' ? 'Done ✓' : '' }}
+              {{ a.status === 'cancelled' ? 'Cancelled' : '' }}
+              {{ a.status === 'confirmed' ? 'Confirmed ✓' : '' }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pagination -->
+    <div *ngIf="!loading && totalPages > 1"
+         class="flex items-center justify-center gap-2 mt-6 flex-wrap">
+      <button (click)="goToPage(currentPage - 1)"
+              [disabled]="currentPage === 1"
+              class="px-3 py-2 rounded-lg border-2 border-gray-200 text-sm font-semibold text-gray-600 hover:border-blue-600 hover:text-blue-600 disabled:opacity-40 disabled:cursor-not-allowed transition bg-white">
+        ← Prev
+      </button>
+
+      <ng-container *ngFor="let page of [].constructor(totalPages); let i = index">
+        <button (click)="goToPage(i + 1)"
+                [class]="'px-3 py-2 rounded-lg border-2 text-sm font-semibold transition ' +
+                  (currentPage === i + 1
+                    ? 'bg-blue-600 border-blue-600 text-white'
+                    : 'border-gray-200 text-gray-600 hover:border-blue-600 hover:text-blue-600 bg-white')">
+          {{ i + 1 }}
+        </button>
+      </ng-container>
+
+      <button (click)="goToPage(currentPage + 1)"
+              [disabled]="currentPage === totalPages"
+              class="px-3 py-2 rounded-lg border-2 border-gray-200 text-sm font-semibold text-gray-600 hover:border-blue-600 hover:text-blue-600 disabled:opacity-40 disabled:cursor-not-allowed transition bg-white">
+        Next →
+      </button>
+    </div>
+
+    <div *ngIf="!loading && filtered.length > 0"
+         class="text-center text-xs text-gray-400 mt-2">
+      Page {{ currentPage }} of {{ totalPages }} — {{ filtered.length }} total
+    </div>
+  </div>
+</div>

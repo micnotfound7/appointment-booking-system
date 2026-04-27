@@ -1,0 +1,186 @@
+<!-- HERO -->
+<section class="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white py-16 sm:py-24 lg:py-32 px-4 text-center">
+  <div class="max-w-4xl mx-auto">
+    <span class="inline-block bg-blue-600 text-white text-xs sm:text-sm font-semibold px-4 py-1.5 rounded-full mb-4 sm:mb-6">
+      🏥 Professional Healthcare Booking
+    </span>
+    <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 tracking-tight leading-tight">
+      Book Your Appointment <br class="hidden sm:block">
+      <span class="text-blue-400">Anytime, Anywhere</span>
+    </h1>
+    <p class="text-sm sm:text-base lg:text-xl text-gray-300 mb-8 sm:mb-10 leading-relaxed max-w-2xl mx-auto">
+      Fast, secure, and professional appointment booking for quality healthcare
+    </p>
+
+    <!-- Buttons -->
+    <div *ngIf="!isLoggedIn" class="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
+      <a routerLink="/register"
+         class="bg-blue-600 text-white font-bold px-6 sm:px-8 py-3 sm:py-3.5 rounded-lg hover:bg-blue-700 active:bg-blue-800 transition text-sm sm:text-base shadow-lg">
+        Get Started 
+      </a>
+      <a routerLink="/login"
+         class="bg-white text-gray-900 font-bold px-6 sm:px-8 py-3 sm:py-3.5 rounded-lg hover:bg-gray-100 transition text-sm sm:text-base shadow-lg">
+        Sign In
+      </a>
+    </div>
+
+    <div *ngIf="isLoggedIn" class="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
+      <a routerLink="/services"
+         class="bg-blue-600 text-white font-bold px-6 sm:px-8 py-3 sm:py-3.5 rounded-lg hover:bg-blue-700 transition text-sm sm:text-base shadow-lg">
+        View Services
+      </a>
+      <a routerLink="/my-appointments"
+         class="bg-white text-gray-900 font-bold px-6 sm:px-8 py-3 sm:py-3.5 rounded-lg hover:bg-gray-100 transition text-sm sm:text-base shadow-lg">
+        My Appointments
+      </a>
+    </div>
+
+    <!-- Stats -->
+    <div class="grid grid-cols-3 gap-4 sm:gap-8 mt-12 sm:mt-16 max-w-md sm:max-w-lg mx-auto">
+      <div class="text-center">
+        <p class="text-2xl sm:text-3xl font-bold text-white">5+</p>
+        <p class="text-gray-400 text-xs sm:text-sm mt-1">Services</p>
+      </div>
+      <div class="text-center border-x border-gray-700">
+        <p class="text-2xl sm:text-3xl font-bold text-white">24/7</p>
+        <p class="text-gray-400 text-xs sm:text-sm mt-1">Booking</p>
+      </div>
+      <div class="text-center">
+        <p class="text-2xl sm:text-3xl font-bold text-white">100%</p>
+        <p class="text-gray-400 text-xs sm:text-sm mt-1">Secure</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="py-12 sm:py-16 lg:py-24 px-4 bg-white">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-10 sm:mb-14">
+      <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">
+        Why Choose BookEase?
+      </h2>
+      <p class="text-gray-500 text-sm sm:text-base lg:text-lg max-w-xl mx-auto">
+        Streamlined healthcare appointment management built for everyone
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+      <div class="bg-gray-50 border-2 border-gray-200 rounded-xl p-6 sm:p-8 text-center hover:border-blue-600 hover:shadow-lg transition group">
+        <div class="w-14 h-14 sm:w-16 sm:h-16 bg-blue-100 rounded-full flex items-center justify-center text-2xl sm:text-3xl mx-auto mb-4 group-hover:bg-blue-600 group-hover:text-white transition">
+          📅
+        </div>
+        <h3 class="text-base sm:text-lg font-bold text-gray-900 mb-2">Easy Booking</h3>
+        <p class="text-gray-500 text-xs sm:text-sm leading-relaxed">
+          Book appointments in seconds with our simple and intuitive interface.
+        </p>
+      </div>
+
+      <div class="bg-gray-50 border-2 border-gray-200 rounded-xl p-6 sm:p-8 text-center hover:border-blue-600 hover:shadow-lg transition group">
+        <div class="w-14 h-14 sm:w-16 sm:h-16 bg-blue-100 rounded-full flex items-center justify-center text-2xl sm:text-3xl mx-auto mb-4 group-hover:bg-blue-600 group-hover:text-white transition">
+          👨‍⚕️
+        </div>
+        <h3 class="text-base sm:text-lg font-bold text-gray-900 mb-2">Expert Services</h3>
+        <p class="text-gray-500 text-xs sm:text-sm leading-relaxed">
+          Access professional healthcare from certified specialists near you.
+        </p>
+      </div>
+
+      <div class="bg-gray-50 border-2 border-gray-200 rounded-xl p-6 sm:p-8 text-center hover:border-blue-600 hover:shadow-lg transition group">
+        <div class="w-14 h-14 sm:w-16 sm:h-16 bg-blue-100 rounded-full flex items-center justify-center text-2xl sm:text-3xl mx-auto mb-4 group-hover:bg-blue-600 group-hover:text-white transition">
+          🔔
+        </div>
+        <h3 class="text-base sm:text-lg font-bold text-gray-900 mb-2">Live Tracking</h3>
+        <p class="text-gray-500 text-xs sm:text-sm leading-relaxed">
+          Monitor your appointment status with real-time updates.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES PREVIEW -->
+<section class="py-12 sm:py-16 lg:py-24 px-4 bg-gray-50">
+  <div class="max-w-7xl mx-auto">
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-10 sm:mb-14">
+      <div>
+        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-2">
+          Featured Services
+        </h2>
+        <p class="text-gray-500 text-sm sm:text-base">Popular healthcare services available</p>
+      </div>
+      <a routerLink="/services"
+         class="text-blue-600 font-semibold hover:text-blue-700 text-sm sm:text-base whitespace-nowrap">
+        View All →
+      </a>
+    </div>
+
+    <!-- No services -->
+    <div *ngIf="services.length === 0"
+         class="text-center py-12 text-gray-400">
+      <p class="text-4xl mb-3">🏥</p>
+      <p class="text-sm">Loading services...</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+      <div *ngFor="let service of services"
+           class="bg-white border-2 border-gray-200 rounded-xl p-5 sm:p-6 lg:p-8 hover:border-blue-600 hover:shadow-lg transition flex flex-col">
+        <div class="text-3xl sm:text-4xl mb-3 sm:mb-4">🏥</div>
+        <h3 class="text-base sm:text-lg font-bold text-gray-900 mb-2">{{ service.name }}</h3>
+        <p class="text-gray-500 text-xs sm:text-sm mb-4 flex-1 leading-relaxed">
+          {{ service.description }}
+        </p>
+        <div class="flex justify-between items-center mb-4 sm:mb-5">
+          <span class="text-lg sm:text-xl font-bold text-blue-600">₱{{ service.price }}</span>
+          <span class="bg-gray-100 text-gray-600 text-xs font-semibold px-2.5 py-1 rounded-full">
+            {{ service.duration_minutes }}m
+          </span>
+        </div>
+        <a [routerLink]="['/book', service.id]"
+           class="block text-center bg-blue-600 text-white py-2.5 rounded-lg hover:bg-blue-700 active:bg-blue-800 transition font-semibold text-sm">
+          Book Now
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA - Not logged in -->
+<section *ngIf="!isLoggedIn"
+         class="py-12 sm:py-16 lg:py-24 px-4 text-center bg-gradient-to-r from-blue-600 to-blue-700">
+  <div class="max-w-2xl mx-auto">
+    <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-3 sm:mb-4">
+      Ready to Get Started?
+    </h2>
+    <p class="text-blue-100 mb-6 sm:mb-8 text-sm sm:text-base lg:text-lg">
+      Create your account and book your first appointment today
+    </p>
+    <div class="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
+      <a routerLink="/register"
+         class="bg-white text-blue-600 font-bold px-8 py-3 rounded-lg hover:bg-gray-100 transition text-sm sm:text-base shadow-md">
+        Get Started 
+      </a>
+      <a routerLink="/login"
+         class="border-2 border-white text-white font-bold px-8 py-3 rounded-lg hover:bg-blue-600 transition text-sm sm:text-base">
+        Sign In
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA - Logged in -->
+<section *ngIf="isLoggedIn"
+         class="py-12 sm:py-16 lg:py-24 px-4 text-center bg-gradient-to-r from-blue-600 to-blue-700">
+  <div class="max-w-2xl mx-auto">
+    <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-3 sm:mb-4">
+      Ready to Book?
+    </h2>
+    <p class="text-blue-100 mb-6 sm:mb-8 text-sm sm:text-base lg:text-lg">
+      Choose from our available healthcare services
+    </p>
+    <a routerLink="/services"
+       class="bg-white text-blue-600 font-bold px-8 sm:px-10 py-3 rounded-lg hover:bg-gray-100 transition text-sm sm:text-base shadow-md inline-block">
+      Book Appointment
+    </a>
+  </div>
+</section>

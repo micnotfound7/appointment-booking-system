@@ -1,0 +1,108 @@
+<div class="min-h-screen flex items-center justify-center bg-gray-50 px-4 py-10 sm:py-16">
+  <div class="w-full max-w-lg">
+
+    <!-- Card -->
+    <div class="bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden">
+
+      <!-- Top Banner -->
+      <div class="bg-gradient-to-r from-blue-600 to-blue-700 px-6 py-7 sm:py-9 text-center">
+        <div class="text-4xl sm:text-5xl mb-2 sm:mb-3">📋</div>
+        <h2 class="text-xl sm:text-2xl font-bold text-white">Create Account</h2>
+        <p class="text-blue-200 text-xs sm:text-sm mt-1">Join BookEase today </p>
+      </div>
+
+      <!-- Form -->
+      <div class="px-5 sm:px-8 py-6 sm:py-8">
+
+        <div *ngIf="error"
+             class="bg-red-50 border-2 border-red-200 text-red-700 px-4 py-3 rounded-lg mb-4 text-xs sm:text-sm flex items-start gap-2">
+          <span class="mt-0.5">⚠️</span>
+          <span>{{ error }}</span>
+        </div>
+
+        <div *ngIf="success"
+             class="bg-green-50 border-2 border-green-200 text-green-700 px-4 py-3 rounded-lg mb-4 text-xs sm:text-sm flex items-center gap-2">
+          ✅ {{ success }}
+        </div>
+
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="space-y-4">
+
+          <!-- Name + Phone (side by side on sm+) -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs sm:text-sm font-semibold text-gray-700 mb-1.5">
+                Full Name <span class="text-red-500">*</span>
+              </label>
+              <input formControlName="name" type="text"
+                     placeholder="Juan Dela Cruz"
+                     class="w-full border-2 border-gray-200 text-gray-900 placeholder-gray-400 rounded-lg px-3 sm:px-4 py-2.5 text-sm focus:outline-none focus:border-blue-600 transition">
+              <p *ngIf="f['name'].touched && f['name'].invalid"
+                 class="text-red-500 text-xs mt-1 font-medium">Name is required</p>
+            </div>
+
+            <div>
+              <label class="block text-xs sm:text-sm font-semibold text-gray-700 mb-1.5">
+                Phone Number <span class="text-red-500">*</span>
+              </label>
+              <input formControlName="phone" type="tel"
+                     placeholder="09XX-XXX-XXXX"
+                     class="w-full border-2 border-gray-200 text-gray-900 placeholder-gray-400 rounded-lg px-3 sm:px-4 py-2.5 text-sm focus:outline-none focus:border-blue-600 transition">
+              <p *ngIf="f['phone'].touched && f['phone'].invalid"
+                 class="text-red-500 text-xs mt-1 font-medium">Valid phone required</p>
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div>
+            <label class="block text-xs sm:text-sm font-semibold text-gray-700 mb-1.5">
+              Email Address <span class="text-red-500">*</span>
+            </label>
+            <input formControlName="email" type="email"
+                   placeholder="you@example.com"
+                   class="w-full border-2 border-gray-200 text-gray-900 placeholder-gray-400 rounded-lg px-3 sm:px-4 py-2.5 text-sm focus:outline-none focus:border-blue-600 transition">
+            <p *ngIf="f['email'].touched && f['email'].invalid"
+               class="text-red-500 text-xs mt-1 font-medium">Valid email is required</p>
+          </div>
+
+          <!-- Location -->
+          <div>
+            <label class="block text-xs sm:text-sm font-semibold text-gray-700 mb-1.5">
+              Location / Address <span class="text-red-500">*</span>
+            </label>
+            <input formControlName="location" type="text"
+                   placeholder="City, Province"
+                   class="w-full border-2 border-gray-200 text-gray-900 placeholder-gray-400 rounded-lg px-3 sm:px-4 py-2.5 text-sm focus:outline-none focus:border-blue-600 transition">
+            <p *ngIf="f['location'].touched && f['location'].invalid"
+               class="text-red-500 text-xs mt-1 font-medium">Location is required</p>
+          </div>
+
+          <!-- Password -->
+          <div>
+            <label class="block text-xs sm:text-sm font-semibold text-gray-700 mb-1.5">
+              Password <span class="text-red-500">*</span>
+            </label>
+            <input formControlName="password" type="password"
+                   placeholder="Min. 6 characters"
+                   class="w-full border-2 border-gray-200 text-gray-900 placeholder-gray-400 rounded-lg px-3 sm:px-4 py-2.5 text-sm focus:outline-none focus:border-blue-600 transition">
+            <p *ngIf="f['password'].touched && f['password'].invalid"
+               class="text-red-500 text-xs mt-1 font-medium">Min. 6 characters required</p>
+          </div>
+
+          <button type="submit" [disabled]="loading"
+                  class="w-full bg-blue-600 text-white py-3 sm:py-3.5 rounded-lg font-bold hover:bg-blue-700 active:bg-blue-800 transition disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base mt-1">
+            {{ loading ? 'Creating Account...' : 'Create Account' }}
+          </button>
+        </form>
+
+        <p class="text-center text-xs sm:text-sm text-gray-500 mt-5">
+          Already have an account?
+          <a routerLink="/login" class="text-blue-600 font-semibold hover:text-blue-700">
+            Sign in
+          </a>
+        </p>
+      </div>
+    </div>
+
+   
+  </div>
+</div>

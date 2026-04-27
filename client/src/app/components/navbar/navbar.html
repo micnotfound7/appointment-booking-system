@@ -1,0 +1,138 @@
+<nav class="bg-white border-b-2 border-gray-200 shadow-sm sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="flex justify-between items-center h-14 sm:h-16">
+
+      <!-- Logo -->
+      <button (click)="goHome()"
+              class="text-lg sm:text-xl font-bold flex items-center gap-2 text-gray-900 hover:text-blue-600 transition bg-transparent border-none cursor-pointer flex-shrink-0">
+        🏥 <span>BookEase</span>
+      </button>
+
+      <!-- Desktop Nav -->
+      <div class="hidden sm:flex items-center gap-4 lg:gap-6">
+        <a *ngIf="isLoggedIn" routerLink="/services"
+           class="text-gray-600 hover:text-blue-600 transition font-medium text-sm lg:text-base">
+          Services
+        </a>
+
+        <ng-container *ngIf="!isLoggedIn">
+          <a routerLink="/login"
+             class="text-gray-600 hover:text-blue-600 transition font-medium text-sm lg:text-base">
+            Login
+          </a>
+          <a routerLink="/register"
+             class="bg-blue-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-blue-700 transition text-sm lg:text-base shadow-sm">
+            Register
+          </a>
+        </ng-container>
+
+        <ng-container *ngIf="isLoggedIn">
+          <a *ngIf="!isAdmin" routerLink="/my-appointments"
+             class="text-gray-600 hover:text-blue-600 transition font-medium text-sm lg:text-base">
+            My Appointments
+          </a>
+          <a *ngIf="isAdmin" routerLink="/admin/dashboard"
+             class="text-gray-600 hover:text-blue-600 transition font-medium text-sm lg:text-base">
+            ⚙️ Admin
+          </a>
+
+          <!-- User Menu -->
+          <div class="relative">
+            <button (click)="toggleMenu($event)"
+                    class="flex items-center gap-2 bg-gray-100 hover:bg-gray-200 text-gray-900 px-3 py-2 rounded-lg transition border border-gray-300 font-medium text-sm">
+              <span class="w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0">
+                {{ userName.charAt(0).toUpperCase() }}
+              </span>
+              <span class="max-w-24 truncate">{{ userName }}</span>
+              <span class="text-gray-400 text-xs">▾</span>
+            </button>
+
+            <div *ngIf="menuOpen"
+                 class="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-xl z-50 overflow-hidden border border-gray-200">
+              <div class="px-4 py-3 border-b border-gray-100 bg-gray-50">
+                <p class="text-xs text-gray-500 font-medium">Signed in as</p>
+                <p class="text-sm font-bold text-gray-900 truncate">{{ userName }}</p>
+              </div>
+              <a routerLink="/profile"
+                 (click)="closeMenu()"
+                 class="flex items-center gap-2 px-4 py-3 hover:bg-blue-50 text-gray-700 hover:text-blue-600 font-medium transition text-sm border-b border-gray-100">
+                👤 Profile
+              </a>
+              <button (click)="logout()"
+                      class="w-full flex items-center gap-2 px-4 py-3 text-red-500 hover:bg-red-50 font-medium transition text-sm">
+                🚪 Logout
+              </button>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+
+      <!-- Mobile Right Side -->
+      <div class="flex sm:hidden items-center gap-2">
+        <ng-container *ngIf="!isLoggedIn">
+          <a routerLink="/login"
+             class="text-gray-600 font-medium text-sm px-3 py-1.5">
+            Login
+          </a>
+          <a routerLink="/register"
+             class="bg-blue-600 text-white px-3 py-1.5 rounded-lg font-semibold text-sm">
+            Register
+          </a>
+        </ng-container>
+
+        <ng-container *ngIf="isLoggedIn">
+          <button (click)="toggleMenu($event)"
+                  class="flex items-center gap-1.5 bg-gray-100 text-gray-900 px-2.5 py-1.5 rounded-lg border border-gray-300 text-sm font-medium">
+            <span class="w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center text-xs font-bold">
+              {{ userName.charAt(0).toUpperCase() }}
+            </span>
+            <span class="text-xs">▾</span>
+          </button>
+        </ng-container>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Mobile Dropdown Menu -->
+  <div *ngIf="menuOpen && isLoggedIn"
+       class="sm:hidden border-t border-gray-200 bg-white shadow-lg">
+    <div class="px-4 py-3 bg-gray-50 border-b border-gray-100">
+      <p class="text-xs text-gray-500">Signed in as</p>
+      <p class="text-sm font-bold text-gray-900">{{ userName }}</p>
+    </div>
+
+    <a *ngIf="isLoggedIn" routerLink="/services"
+       (click)="closeMenu()"
+       class="flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 border-b border-gray-100 font-medium text-sm">
+      🏥 Services
+    </a>
+
+    <a *ngIf="!isAdmin" routerLink="/my-appointments"
+       (click)="closeMenu()"
+       class="flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 border-b border-gray-100 font-medium text-sm">
+      📅 My Appointments
+    </a>
+
+    <a *ngIf="isAdmin" routerLink="/admin/dashboard"
+       (click)="closeMenu()"
+       class="flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 border-b border-gray-100 font-medium text-sm">
+      ⚙️ Admin Dashboard
+    </a>
+
+    <a routerLink="/profile"
+       (click)="closeMenu()"
+       class="flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 border-b border-gray-100 font-medium text-sm">
+      👤 Profile
+    </a>
+
+    <button (click)="logout()"
+            class="w-full flex items-center gap-3 px-4 py-3 text-red-500 hover:bg-red-50 font-medium text-sm">
+      🚪 Logout
+    </button>
+  </div>
+</nav>
+
+<!-- Backdrop -->
+<div *ngIf="menuOpen" (click)="closeMenu()"
+     class="fixed inset-0 z-40 bg-black bg-opacity-10"></div>

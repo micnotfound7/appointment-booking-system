@@ -1,1 +1,60 @@
-/* You can add global styles to this file, and also import other style files */
+/* Professional Office Theme Styles */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-white min-h-screen text-gray-900;
+  }
+
+  button:focus {
+    @apply outline-none;
+  }
+
+  /* Selection styling */
+  ::selection {
+    @apply bg-blue-200 text-gray-900;
+  }
+}
+
+@layer components {
+  /* Card styles */
+  .card {
+    @apply bg-white border-2 border-gray-200 rounded-lg;
+  }
+
+  .card-hover {
+    @apply bg-white border-2 border-gray-200 rounded-lg hover:border-blue-600 hover:shadow-lg transition;
+  }
+
+  /* Button styles */
+  .btn-primary {
+    @apply bg-blue-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-700 transition;
+  }
+
+  .btn-secondary {
+    @apply bg-gray-100 text-gray-900 font-bold py-3 px-6 rounded-lg hover:bg-gray-200 transition border border-gray-300;
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  @apply w-2;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-400 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-500;
+}
