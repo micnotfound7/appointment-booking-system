@@ -64,10 +64,10 @@ import { RouterModule } from '@angular/router';
                 <span>📧</span> bookease&#64;gmail.com
               </li>
               <li class="flex items-center gap-2">
-                <span>📞</span> +63 912 345 6789
+                <span>📞</span> +63 9939782042
               </li>
               <li class="flex items-center gap-2">
-                <span>📍</span> Cebu City, Philippines
+                <span>📍</span> ILoilo City, Philippines
               </li>
             </ul>
           </div>
@@ -80,9 +80,7 @@ import { RouterModule } from '@angular/router';
           <p class="text-gray-500 text-xs sm:text-sm">
             © 2026 BookEase. All rights reserved.
           </p>
-          <p class="text-gray-600 text-xs">
-            Built with Angular + Node.js + MySQL
-          </p>
+         
         </div>
       </div>
 
