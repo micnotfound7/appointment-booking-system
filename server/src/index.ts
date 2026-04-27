@@ -1,3 +1,6 @@
+import dotenv from 'dotenv';
+dotenv.config();
+
 import express from 'express';
 import cors from 'cors';
 import mysql from 'mysql2/promise';
@@ -23,11 +26,13 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDoc, {
 app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
 
 const pool = mysql.createPool({
-  host: '127.0.0.1',
-  user: 'root',
-  password: 'Michael#12345',
-  database: 'appointment_db',
-  port: 3306,
+  host: process.env.DB_HOST || '127.0.0.1',
+  user: process.env.DB_USER || 'root',
+  password: process.env.DB_PASSWORD || 'Michael#12345',
+  database: process.env.DB_NAME || 'appointment_db',
+  port: Number(process.env.DB_PORT) || 3306,
+  waitForConnections: true,
+  connectionLimit: 10,
 });
 
 const JWT_SECRET = 'appointment_super_secret_key_2026';
