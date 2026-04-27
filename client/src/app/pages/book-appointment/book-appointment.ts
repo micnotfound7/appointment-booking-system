@@ -76,7 +76,7 @@ export class BookAppointmentComponent implements OnInit {
     this.cdr.markForCheck();
 
     this.http.get<any[]>(
-      `http://localhost:3000/api/appointments/check?date=${date}&service_id=${this.service?.id}`
+      `https://bookease-backend-9p4b.onrender.com/api/appointments/check?date=${date}&service_id=${this.service?.id}`
     ).subscribe({
       next: (data: any[]) => {
         this.bookedSlots = data.map((a: any) => a.appointment_time.substring(0, 5));

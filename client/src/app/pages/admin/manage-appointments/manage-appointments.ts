@@ -54,7 +54,7 @@ export class ManageAppointmentsComponent implements OnInit {
 
   loadUsers(): void {
     this.loadingUsers = true;
-    this.http.get<any[]>('http://localhost:3000/api/users').subscribe({
+    this.http.get<any[]>('https://bookease-backend-9p4b.onrender.com/api/users').subscribe({
       next: (data) => {
         this.users = data;
         this.loadingUsers = false;

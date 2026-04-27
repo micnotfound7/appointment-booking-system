@@ -18,7 +18,7 @@ export class DashboardComponent implements OnInit {
   constructor(private http: HttpClient, private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {
-    this.http.get<any[]>('http://localhost:3000/api/appointments').subscribe({
+    this.http.get<any[]>('https://bookease-backend-9p4b.onrender.com/api/appointments').subscribe({
       next: (data) => {
         this.stats.total = data.length;
         this.stats.pending = data.filter(a => a.status === 'pending').length;
@@ -32,11 +32,11 @@ export class DashboardComponent implements OnInit {
       error: () => { this.loading = false; this.cdr.markForCheck(); }
     });
 
-    this.http.get<any[]>('http://localhost:3000/api/users').subscribe({
+    this.http.get<any[]>('https://bookease-backend-9p4b.onrender.com/api/users').subscribe({
       next: (data) => { this.stats.users = data.length; this.cdr.markForCheck(); }
     });
 
-    this.http.get<any[]>('http://localhost:3000/api/services').subscribe({
+    this.http.get<any[]>('https://bookease-backend-9p4b.onrender.com/api/services').subscribe({
       next: (data) => { this.stats.services = data.length; this.cdr.markForCheck(); }
     });
   }

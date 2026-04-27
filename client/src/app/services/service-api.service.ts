@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class ServiceApiService {
-  private apiUrl = 'http://localhost:3000/api/services';
+  private apiUrl = 'https://bookease-backend-9p4b.onrender.com/api/services';
 
   constructor(private http: HttpClient) {}
 

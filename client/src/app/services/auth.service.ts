@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private apiUrl = 'http://localhost:3000/api/auth';
+  private apiUrl = 'https://bookease-backend-9p4b.onrender.com/api/auth';
   private userSubject = new BehaviorSubject<any>(this.getStoredUser());
   currentUser$ = this.userSubject.asObservable();
 

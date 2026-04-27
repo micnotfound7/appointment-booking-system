@@ -27,7 +27,7 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.http.get('http://localhost:3000/api/users/profile').subscribe({
+    this.http.get('https://bookease-backend-9p4b.onrender.com/api/users/profile').subscribe({
       next: (data: any) => {
         this.profile = data;
         this.form.patchValue({ 
@@ -65,7 +65,7 @@ export class ProfileComponent implements OnInit {
       formData.append('profile_image', this.selectedFile);
     }
 
-    this.http.put('http://localhost:3000/api/users/profile', formData).subscribe({
+    this.http.put('https://bookease-backend-9p4b.onrender.com/api/users/profile', formData).subscribe({
       next: (res: any) => {
         this.loading = false;
         this.success = 'Profile updated successfully!';
