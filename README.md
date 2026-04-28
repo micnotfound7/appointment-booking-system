@@ -80,6 +80,4 @@ ng serve
 [Manage Appointments]() | Admin appointment and user management |
 [Manage Services]() | Admin service CRUD management |
 [API Docs]() | Swagger API documentation |
-[Postman Register]() | API test - Register endpoint |
-[Postman Login]() | API test - Login endpoint |
-[Postman Services]() | API test - Services endpoint |
+
