@@ -15,6 +15,7 @@ export class RegisterComponent {
   loading = false;
   error = '';
   success = '';
+  showPassword = false;
 
   constructor(private fb: FormBuilder, private auth: AuthService, private router: Router) {
     this.registerForm = this.fb.group({
