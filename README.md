@@ -6,7 +6,7 @@ BookEase is a full-stack healthcare appointment booking system where patients ca
 ## 2. Live Links
 *Frontend*: https://appointment-booking-system-flax-sigma.vercel.app
 *Backend API:* https://bookease-backend-9p4b.onrender.com
-
+*API Docs:* https://bookease-backend-9p4b.onrender.com/api-docs
 
 ## 3. Tech Stack
 *Frontend:* Angular 17 + Tailwind CSS
@@ -33,22 +33,15 @@ ng serve
 
 ## 5. API Overview
 
-| Method | Endpoint | Description | Auth |
-|--------|----------|-------------|------|
-| POST | /api/auth/register | Register user | Public |
-| POST | /api/auth/login | Login | Public |
-| GET | /api/services | Get all services | Public |
-| POST | /api/services | Create service | Admin |
-| PUT | /api/services/:id | Update service | Admin |
-| DELETE | /api/services/:id | Delete service | Admin |
-| POST | /api/appointments | Book appointment | User |
-| GET | /api/appointments/my | My appointments | User |
-| GET | /api/appointments | All appointments | Admin |
-| PATCH | /api/appointments/:id/status | Update status | Admin |
-| DELETE | /api/appointments/:id | Delete | User |
-| GET | /api/users/profile | Get profile | User |
-| PUT | /api/users/profile | Update profile | User |
-| GET | /api/users | All users | Admin |
+|## API Documentation Screenshots
+
+| Endpoint | Preview |
+|---------|---------|
+| POST /api/auth/login | ![Login API](screenshots/api-login.png) |
+| GET /api/services | ![Services API](screenshots/api-services.png) |
+| POST /api/appointments | ![Book API](screenshots/api-book.png) |
+| Swagger Docs | ![Swagger](screenshots/swagger-docs.png) |
+
 
 ## 6. Features Implemented
 - ✅ User Registration & Login (JWT Authentication)
