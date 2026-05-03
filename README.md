@@ -6,7 +6,6 @@ BookEase is a full-stack healthcare appointment booking system where patients ca
 ## 2. Live Links
 *Frontend*: https://appointment-booking-system-flax-sigma.vercel.app
 *Backend API:* https://bookease-backend-9p4b.onrender.com
-*API Docs:* https://bookease-backend-9p4b.onrender.com/api-docs
 
 ## 3. Tech Stack
 *Frontend:* Angular 17 + Tailwind CSS
