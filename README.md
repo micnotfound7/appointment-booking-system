@@ -86,28 +86,30 @@ ng serve
 
 ---
 
-## 7. Screenshots
+#### 7. Screenshots
 
 ### UI Screenshots
 
 | Page | Description | Preview |
 |---|---|---|
-| Home | Landing page with hero section and featured services | ![Home](screenshots/home.png) |
-| Register | User registration form with validation | ![Register](screenshots/register.png) |
-| Login | Secure JWT login page | ![Login](screenshots/login.png) |
-| Services | Browse services with search and filter | ![Services](screenshots/services.png) |
-| Book Appointment | Book appointment with time slot conflict detection | ![Book](screenshots/book.png) |
+| Home | Landing page with hero section and featured services | ![Home](screenshots/Home Page.png) |
+| Register | User registration form with validation | ![Register](screenshots/Register.png) |
+| Login | Secure JWT login page | ![Login](screenshots/Login.png) |
+| Services | Browse services with search and filter | ![Services](screenshots/Services.png) |
+| Book Appointment | Book appointment with time slot conflict detection | ![Book](screenshots/Book-appointment.png) |
 | My Appointments | View and manage personal appointments | ![My Appointments](screenshots/my-appointments.png) |
 | Profile | Update profile with image upload | ![Profile](screenshots/profile.png) |
 | Admin Dashboard | Admin statistics dashboard | ![Dashboard](screenshots/admin-dashboard.png) |
-| Manage Appointments | Admin appointment and user management | ![Manage Appointments](screenshots/admin-appointments.png) |
-| Manage Services | Admin service CRUD management | ![Manage Services](screenshots/admin-services.png) |
+| Manage Appointments | Admin appointment and user management | ![Manage Appointments](screenshots/manage-appointments.png) |
+| Manage Services | Admin service CRUD management | ![Manage Services](screenshots/manage-services.png) |
 
 ### API Testing Screenshots
 
 | Endpoint | Description | Preview |
 |---|---|---|
-| POST /api/auth/login | User login with JWT response | ![Login API](screenshots/api-login.png) |
-| GET /api/services | Fetch all available services | ![Services API](screenshots/api-services.png) |
-| POST /api/appointments | Book a new appointment | ![Book API](screenshots/api-book.png) |
-| Swagger Docs | Full API documentation UI | ![Swagger](screenshots/swagger-docs.png) |
+| POST /api/auth/login | User login with JWT response | ![Login API](screenshots/api-login.png.png) |
+| GET /api/services | Fetch all available services | ![Services API](screenshots/api-services.png.png) |
+| POST /api/appointments | Book a new appointment | ![Book API](screenshots/api-book.png.png) |
+| Swagger Docs | Full API documentation UI | ![Swagger](screenshots/api-docs.png) |
+
+> 📁 All screenshots are inside the `/screenshots` folder.
